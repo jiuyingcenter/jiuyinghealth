@@ -1,0 +1,176 @@
+/* ==========================================================================
+   base.css — reset, design tokens, typography, utilities, motion
+   All colours are declared once here; themes.css overrides the palette.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--c-ink);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* stop iOS from rubber-banding the whole page behind the drawer */
+  overscroll-behavior-y: none;
+}
+
+/* components that set `display` would otherwise defeat the hidden attribute */
+[hidden] { display: none !important; }
+
+h1, h2, h3, h4, h5, p, figure, blockquote, dl, dd { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+a { color: var(--c-primary); text-decoration: none; }
+a:hover { color: var(--c-primary-dark); }
+strong, b { font-weight: 700; }
+
+:root {
+  /* ---- palette (overridden per region in themes.css) ---- */
+  --c-primary: #0E7C66;
+  --c-primary-dark: #0A5A4B;
+  --c-primary-soft: #E6F4F1;
+  --c-accent: #E09B3D;
+  --c-accent-soft: #FDF3E4;
+
+  --c-ink: #10231F;
+  --c-ink-2: #3B524E;
+  --c-muted: #6B817C;
+  --c-line: #E2EAE8;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #F5FAF9;
+  --c-bg: #FFFFFF;
+
+  --grad-primary: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-dark) 100%);
+  --grad-hero: linear-gradient(160deg, var(--c-primary-soft) 0%, #FFFFFF 55%, var(--c-accent-soft) 100%);
+
+  --shadow-xs: 0 1px 2px rgba(16, 40, 36, .05);
+  --shadow-sm: 0 2px 8px rgba(16, 40, 36, .06);
+  --shadow-md: 0 8px 24px rgba(16, 40, 36, .09);
+  --shadow-lg: 0 20px 48px rgba(16, 40, 36, .13);
+
+  /* ---- typography ---- */
+  --font-sans: 'Inter', 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fs-base: 16px;
+  --lh-base: 1.7;
+
+  --fs-xs: .78rem;
+  --fs-sm: .875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: clamp(1.65rem, 1.2rem + 1.6vw, 2.25rem);
+  --fs-3xl: clamp(2rem, 1.4rem + 2.6vw, 3rem);
+  --fs-4xl: clamp(2.4rem, 1.5rem + 4vw, 4rem);
+
+  /* ---- geometry ---- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  --page: 1200px;
+  --gutter: clamp(18px, 4vw, 40px);
+  --sec-y: clamp(58px, 7vw, 104px);
+  --header-h: 68px;
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --dur: .32s;
+}
+
+/* ============================ typography ============================ */
+.t-display { font-size: var(--fs-4xl); line-height: 1.14; font-weight: 800; letter-spacing: -.02em; }
+.t-h2 { font-size: var(--fs-3xl); line-height: 1.2; font-weight: 800; letter-spacing: -.015em; }
+.t-h3 { font-size: var(--fs-2xl); line-height: 1.28; font-weight: 700; letter-spacing: -.01em; }
+.t-h4 { font-size: var(--fs-xl); line-height: 1.35; font-weight: 700; }
+.t-lead { font-size: var(--fs-lg); line-height: 1.75; color: var(--c-ink-2); }
+.t-body { color: var(--c-ink-2); }
+.t-small { font-size: var(--fs-sm); color: var(--c-muted); }
+.t-tiny { font-size: var(--fs-xs); color: var(--c-muted); }
+.t-strong { font-weight: 700; color: var(--c-ink); }
+.t-balance { text-wrap: balance; }
+.t-pretty { text-wrap: pretty; }
+
+/* ============================ utilities ============================ */
+.u-wrap { width: 100%; max-width: var(--page); margin-inline: auto; padding-inline: var(--gutter); }
+.u-center { text-align: center; }
+.u-mt-0 { margin-top: 0; }
+.u-mt-s { margin-top: 12px; }
+.u-mt-m { margin-top: 22px; }
+.u-mt-l { margin-top: 36px; }
+.u-hidden { display: none !important; }
+.u-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.u-accent { color: var(--c-accent); }
+.u-primary { color: var(--c-primary); }
+.u-nowrap { white-space: nowrap; }
+
+.skip-link {
+  position: absolute; left: 50%; top: 0; transform: translate(-50%, -120%);
+  z-index: 999; background: var(--c-primary); color: #fff;
+  padding: 10px 20px; border-radius: 0 0 var(--r-md) var(--r-md); font-weight: 600;
+  transition: transform .2s var(--ease);
+}
+.skip-link:focus { transform: translate(-50%, 0); color: #fff; }
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--c-primary) 45%, transparent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ============================ motion ============================ */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(22px); }
+  .reveal.is-in {
+    opacity: 1; transform: none;
+    transition: opacity .7s var(--ease), transform .7s var(--ease);
+    transition-delay: var(--rd, 0ms);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+@keyframes jy-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes jy-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-accent) 55%, transparent); }
+  70% { box-shadow: 0 0 0 14px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+@keyframes jy-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ========================= touch & small screens ========================= */
+/* touch devices: hover lift states "stick" after a tap, so drop them */
+@media (hover: none) {
+  .btn:hover { transform: none; }
+  .card--hover:hover { transform: none; box-shadow: none; }
+  .hosp:hover { transform: none; box-shadow: none; }
+  .fab__btn:hover { transform: none; }
+}
+
+/* ============================ noscript ============================ */
+.noscript {
+  max-width: 720px; margin: 80px auto; padding: 28px 32px;
+  border: 1px solid var(--c-line); border-radius: var(--r-lg); background: var(--c-surface-2);
+}
+.noscript h1 { font-size: 1.4rem; margin-bottom: 12px; color: var(--c-primary); }
+.noscript p { margin-bottom: 10px; color: var(--c-ink-2); }

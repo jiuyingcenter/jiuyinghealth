@@ -1,0 +1,108 @@
+/* ==========================================================================
+   themes.css — regional colour palettes + per-language typography
+   The region is resolved from the visitor's IP (see core/geo.js) and written
+   to <html data-region="...">. Each palette is tuned to the visual
+   conventions of that region while staying inside medical-trust colours.
+   ========================================================================== */
+
+/* ------------------- Southeast Asia  (global fallback) ------------------- */
+html[data-region="sea"] {
+  --c-primary: #0D8A6A;  --c-primary-dark: #0A6350;  --c-primary-soft: #E5F5F0;
+  --c-accent: #E79B32;   --c-accent-soft: #FDF3E3;
+  --c-ink: #0F2420; --c-ink-2: #37544D; --c-muted: #67847C;
+  --c-line: #DFEDE8; --c-surface-2: #F4FAF8;
+  --grad-hero: linear-gradient(165deg, #E5F5F0 0%, #FFFFFF 52%, #FDF3E3 100%);
+}
+
+/* ------------------------------ East Asia ------------------------------- */
+html[data-region="eas"] {
+  --c-primary: #1A5F8F;  --c-primary-dark: #12456B;  --c-primary-soft: #E7F0F8;
+  --c-accent: #C79A2E;   --c-accent-soft: #FCF6E6;
+  --c-ink: #10222E; --c-ink-2: #35505F; --c-muted: #63797F;
+  --c-line: #DEE8F0; --c-surface-2: #F5F9FC;
+  --grad-hero: linear-gradient(165deg, #E7F0F8 0%, #FFFFFF 52%, #FCF6E6 100%);
+}
+
+/* ------------------------------- Europe --------------------------------- */
+html[data-region="eur"] {
+  --c-primary: #17365D;  --c-primary-dark: #0F2540;  --c-primary-soft: #E9EEF6;
+  --c-accent: #9C7B4A;   --c-accent-soft: #F7F3EA;
+  --c-ink: #111A26; --c-ink-2: #37414F; --c-muted: #66707E;
+  --c-line: #E0E5EE; --c-surface-2: #F6F8FB;
+  --grad-hero: linear-gradient(165deg, #E9EEF6 0%, #FFFFFF 52%, #F7F3EA 100%);
+}
+
+/* ------------------------------ Americas -------------------------------- */
+html[data-region="ame"] {
+  --c-primary: #0B58B8;  --c-primary-dark: #08408A;  --c-primary-soft: #E7F0FC;
+  --c-accent: #12A3A3;   --c-accent-soft: #E5F5F5;
+  --c-ink: #101A2B; --c-ink-2: #33475E; --c-muted: #647689;
+  --c-line: #DDE7F4; --c-surface-2: #F5F9FE;
+  --grad-hero: linear-gradient(165deg, #E7F0FC 0%, #FFFFFF 52%, #E5F5F5 100%);
+}
+
+/* ---------------------- Middle East & North Africa ---------------------- */
+html[data-region="mea"] {
+  --c-primary: #0B5340;  --c-primary-dark: #073A2D;  --c-primary-soft: #E9F2EE;
+  --c-accent: #C89B4A;   --c-accent-soft: #FAF3E4;
+  --c-ink: #101F1A; --c-ink-2: #354F46; --c-muted: #637D74;
+  --c-line: #DFEAE5; --c-surface-2: #F5FAF7;
+  --grad-hero: linear-gradient(165deg, #E9F2EE 0%, #FFFFFF 52%, #FAF3E4 100%);
+}
+
+/* ------------------------------ South Asia ------------------------------ */
+html[data-region="sas"] {
+  --c-primary: #17556B;  --c-primary-dark: #0F3D4E;  --c-primary-soft: #E9F1F5;
+  --c-accent: #DE8F2E;   --c-accent-soft: #FDF2E4;
+  --c-ink: #101E24; --c-ink-2: #354C55; --c-muted: #63787F;
+  --c-line: #DEE8ED; --c-surface-2: #F5F9FB;
+  --grad-hero: linear-gradient(165deg, #E9F1F5 0%, #FFFFFF 52%, #FDF2E4 100%);
+}
+
+/* -------------------------------- Africa -------------------------------- */
+html[data-region="afr"] {
+  --c-primary: #2F6F4E;  --c-primary-dark: #1F5138;  --c-primary-soft: #EAF3ED;
+  --c-accent: #E2833A;   --c-accent-soft: #FDF1E6;
+  --c-ink: #12211A; --c-ink-2: #37503F; --c-muted: #657D70;
+  --c-line: #E0EBE3; --c-surface-2: #F5FAF6;
+  --grad-hero: linear-gradient(165deg, #EAF3ED 0%, #FFFFFF 52%, #FDF1E6 100%);
+}
+
+/* ------------------------------- Oceania ------------------------------- */
+html[data-region="oce"] {
+  --c-primary: #0A6E8F;  --c-primary-dark: #074F68;  --c-primary-soft: #E6F2F7;
+  --c-accent: #EE9A3C;   --c-accent-soft: #FDF3E6;
+  --c-ink: #102027; --c-ink-2: #354D58; --c-muted: #647982;
+  --c-line: #DEE9EF; --c-surface-2: #F5FAFC;
+  --grad-hero: linear-gradient(165deg, #E6F2F7 0%, #FFFFFF 52%, #FDF3E6 100%);
+}
+
+/* ==========================================================================
+   Typography per language — scripts that need their own font family
+   ========================================================================== */
+html[lang="zh-CN"], html[lang="zh-Hans"] {
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', system-ui, sans-serif;
+  --lh-base: 1.85;
+}
+html[lang="zh-TW"], html[lang="zh-Hant"] {
+  --font-sans: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  --lh-base: 1.85;
+}
+html[lang="th"] {
+  --font-sans: 'Noto Sans Thai', 'Leelawadee UI', 'Tahoma', system-ui, sans-serif;
+  --lh-base: 1.9;
+}
+html[lang="ar"] {
+  --font-sans: 'Cairo', 'Noto Naskh Arabic', 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+  --lh-base: 1.95;
+}
+html[lang="vi"] {
+  --font-sans: 'Inter', 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* CJK / Thai / Arabic headings need looser tracking and slightly smaller scale */
+html[lang^="zh"] .t-display,
+html[lang^="zh"] .t-h2,
+html[lang^="zh"] .t-h3 { letter-spacing: 0; font-weight: 700; }
+html[lang="th"] .t-display, html[lang="th"] .t-h2, html[lang="th"] .t-h3 { letter-spacing: 0; }
+html[lang="ar"] .t-display, html[lang="ar"] .t-h2, html[lang="ar"] .t-h3 { letter-spacing: 0; }
